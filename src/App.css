@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .App-logo {
@@ -13,8 +16,9 @@
 }
 
 .App-header {
-  background-color: #112714;
-  min-height: 100vh;
+  background-color: #0e4916;
+  height: 5%;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +26,39 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.App-main {
+  display: grid;
+  grid-template-columns: 10% 1fr;
+  background-color: rgb(197, 218, 156);
+}
+
+.display-main {
+  display: flex;
+  justify-content: stretch;
+}
+
+.scoreboard-comp {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: blue;
+  color: white;
+}
+
+.best-area, .score-area {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid rgba(0,0,0,0);
+}
+
+/* .best-area {
+  border-left: 10px solid yellow;
+}
+
+.score-area {
+  border-left: 10px solid green;
+} */
 
 .App-link {
   color: #61dafb;
