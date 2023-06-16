@@ -18,7 +18,7 @@ const App = () => {
       </header>
       <div className='App-main'>
         <Scoreboard scoreboard = {scoreStats} />
-        <Display score = {scoreStats} setAll = {setStats} />
+        <Display score = {scoreStats} set = {setStats} />
       </div>
       <footer className='App-footer'>Developed by RodrigoAPassos</footer>
     </div>

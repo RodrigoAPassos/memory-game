@@ -2,7 +2,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 }
 
 .App-logo {
@@ -29,37 +29,91 @@
 
 .App-main {
   display: grid;
-  grid-template-columns: 10% 1fr;
+  grid-template-columns: max-content 1fr;
   background-color: rgb(197, 218, 156);
+  height: 100%;
+  overflow: hidden;
 }
 
 .display-main {
   display: flex;
-  justify-content: stretch;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .scoreboard-comp {
   display: flex;
   flex-direction: column;
   padding: 5px;
-  background-color: blue;
   color: white;
+  gap: 2px;
 }
 
 .best-area, .score-area {
   display: flex;
   justify-content: space-between;
-  border: 2px solid rgba(0,0,0,0);
+  gap: 2px;
 }
 
-/* .best-area {
+.score-title, .bestScore-title {
+  background-color: blue;
+  width: 100%;
+  padding: 5px;
+}
+
+.score-value, .bestScore-value {
+  background-color: black;
+  padding: 5px;
+}
+
+.best-area {
   border-left: 10px solid yellow;
 }
 
 .score-area {
   border-left: 10px solid green;
-} */
+}
 
-.App-link {
-  color: #61dafb;
+.teams-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.teams {
+  border: 1px solid #0e4916;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  width: 15%;
+  max-width: min-content;
+  min-width: 100px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.teams:hover {
+  scale: 1.1;
+}
+
+.escudo {
+  width: 100%;
+}
+
+.teams p {
+  margin: 5px;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  padding: 5px;
 }
