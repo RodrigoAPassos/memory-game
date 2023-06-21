@@ -2,7 +2,7 @@ import React from 'react'
 
 const Scoreboard = (props) => {
 
-    const {score, bestScore} = props.scoreboard;
+  const {score, bestScore} = props.scoreboard;
 
   return (
     <div className='scoreboard-comp'>

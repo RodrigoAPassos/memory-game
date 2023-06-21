@@ -22,7 +22,7 @@ import athletico from '../iconSrc/atlpr.png';
 
 const Display = (props) => {
 
-  const [teams, setClicked] = useState([
+  const teams = [
     {name: "Santos", img: santos, clicked: false},
     {name: "São Paulo", img: saoPaulo, clicked: false},
     {name: "Corinthians", img: corinthians, clicked: false},
@@ -43,30 +43,84 @@ const Display = (props) => {
     {name: "Coritiba", img: coritiba, clicked: false},
     {name: "Athletico-PR", img: athletico, clicked: false},
     {name: "Atlético-MG", img: atletico, clicked: false},
-  ])
+  ];
+
+  const [cards, setCards] = useState(teams);
+  const [miss, setMiss] = useState(false);
 
   const {setScore, setBestScore} = props.set;
   const {score, bestScore} = props.score;
 
-  const clickedTeam = Event => {
-    let teamName = Event.currentTarget.id;
-    setClicked(teams.map(team => {
+  useEffect(() => {
+    document.querySelectorAll(".teams").forEach((team) => {
+      team.addEventListener("click", handleClick);
+    })
+
+    return () => {
+      document.querySelectorAll(".teams").forEach((team) => {
+        team.removeEventListener("click", handleClick);
+      })
+    }
+
+  },[score]);
+
+  const shuffle = (arr) => {
+    let currentIndex = arr.length
+    let randomIndex;
+
+    while(currentIndex != 0) {
+    
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [arr[currentIndex], arr[randomIndex]] = [
+        arr[randomIndex], arr[currentIndex]];
+    }
+    return arr;
+  }
+
+
+  const handleClick = function clickedTeam(e) {    
+    const teamName = e.target.getAttribute("data-name");
+    let newCards = cards.map(team => {
       if(team.name == teamName && team.clicked == false){
         setScore(score + 1);
         if (bestScore < score) setBestScore(score);
-        return {...team,clicked: true};
+        return {
+          ...team,
+          clicked: true
+        };
       }else if (team.name == teamName && team.clicked == true) {
-        setScore(0);
+        setMiss(true);
         return team;
-      }
-    }))
+      }else return team;
+    });
+    if (miss == true) setAllUnclicked();
+    
+    setCards(shuffle(newCards));
+    //console.log(cards);
+    }
+
+  const setAllUnclicked = () => {
+    setScore(0);
+    let newCards = cards.map(team => {
+      if (team.clicked == true){
+      return {...team, clicked: false}
+      }else return team;
+    })
+    setCards(shuffle(newCards));
+    setMiss(false);
+    console.log(cards);
   }
     
-  const displayTeams = teams.map((team, index) => 
-    <li className='teams' id={team.name} key={index} onClick={()=>clickedTeam(Event)} >
-      <p className='team-name'>{team.name}</p>
-      <img className='escudo' src={team.img} alt={team.name} />
-    </li>);
+  const displayTeams = cards.map((team, index) => 
+    <li className='teams' data-name={team.name} key={index} >
+      <p className='team-name' data-name={team.name}>{team.name}</p>
+      <img className='escudo' data-name={team.name} src={team.img} alt={team.name} />
+    </li>
+  );
 
   return (
     <div className='display-main'>
