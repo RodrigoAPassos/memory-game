@@ -53,6 +53,7 @@ const Display = (props) => {
       case 0:
         while(teams.length !== cardsLength[turn]) {
           randomIndex = Math.floor(Math.random() * AllTeams.length);
+          // eslint-disable-next-line no-loop-func
           if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
           else continue;
         }
@@ -60,6 +61,7 @@ const Display = (props) => {
       case 1:
         while(teams.length !== cardsLength[turn]) {
           randomIndex = Math.floor(Math.random() * AllTeams.length);
+          // eslint-disable-next-line no-loop-func
           if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
           else continue;
         }
@@ -67,6 +69,7 @@ const Display = (props) => {
       case 2:
         while(teams.length !== cardsLength[turn]) {
           randomIndex = Math.floor(Math.random() * AllTeams.length);
+          // eslint-disable-next-line no-loop-func
           if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
           else continue;
         }
@@ -74,6 +77,7 @@ const Display = (props) => {
       case 3:
         while(teams.length !== cardsLength[turn]) {
           randomIndex = Math.floor(Math.random() * AllTeams.length);
+          // eslint-disable-next-line no-loop-func
           if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
           else continue;
         }
@@ -103,6 +107,7 @@ const Display = (props) => {
       })
     }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [score, bestScore, cards]);
 
   const shuffle = (arr) => {
