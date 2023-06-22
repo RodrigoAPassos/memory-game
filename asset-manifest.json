@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/memory-game/static/css/main.cae92ed1.css",
+    "main.js": "/memory-game/static/js/main.03d09652.js",
+    "static/js/787.69b12325.chunk.js": "/memory-game/static/js/787.69b12325.chunk.js",
+    "static/media/corinthians.png": "/memory-game/static/media/corinthians.6b05c45fd0634abccf0e.png",
+    "static/media/palmeiras.png": "/memory-game/static/media/palmeiras.5169cc2d15020f9f5eda.png",
+    "static/media/fluminense.png": "/memory-game/static/media/fluminense.5af60071cea90e1cb155.png",
+    "static/media/cruzeiro.png": "/memory-game/static/media/cruzeiro.8299c3a6ffd5516f7282.png",
+    "static/media/fla.png": "/memory-game/static/media/fla.bc09afe00a063e34b1b4.png",
+    "static/media/gremio.png": "/memory-game/static/media/gremio.07ace87c20b09f3b29c5.png",
+    "static/media/interrs.png": "/memory-game/static/media/interrs.e9171b37ae76bc2c3682.png",
+    "static/media/atlpr.png": "/memory-game/static/media/atlpr.b19335cdc4f74bb95223.png",
+    "static/media/atletico.png": "/memory-game/static/media/atletico.ba77dfd43416bc2a6f57.png",
+    "static/media/santos.png": "/memory-game/static/media/santos.f1886ea34db5de26fc67.png",
+    "static/media/vasco.png": "/memory-game/static/media/vasco.49bd5a22df7766a9be77.png",
+    "static/media/bragantino.png": "/memory-game/static/media/bragantino.a1556bfc842308285e4a.png",
+    "static/media/cuiaba_mt.png": "/memory-game/static/media/cuiaba_mt.53bf7f91cc577cb86377.png",
+    "static/media/ammg.png": "/memory-game/static/media/ammg.b4cb897999551b07e92b.png",
+    "static/media/goias.png": "/memory-game/static/media/goias.8f5a6ca01ed95c8be5fb.png",
+    "static/media/bahia.png": "/memory-game/static/media/bahia.326f5529bb29c8388703.png",
+    "static/media/fortaleza.png": "/memory-game/static/media/fortaleza.a8ff1424ea4326bbee7f.png",
+    "static/media/botafogo.png": "/memory-game/static/media/botafogo.766c05dbacfd8d85772b.png",
+    "static/media/coritiba.png": "/memory-game/static/media/coritiba.9edb2f412f34b0400428.png",
+    "static/media/logo-brasileirao-footer.svg": "/memory-game/static/media/logo-brasileirao-footer.140d2bd76bf0579bcda3.svg",
+    "index.html": "/memory-game/index.html",
+    "main.cae92ed1.css.map": "/memory-game/static/css/main.cae92ed1.css.map",
+    "main.03d09652.js.map": "/memory-game/static/js/main.03d09652.js.map",
+    "787.69b12325.chunk.js.map": "/memory-game/static/js/787.69b12325.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cae92ed1.css",
+    "static/js/main.03d09652.js"
+  ]
+}
