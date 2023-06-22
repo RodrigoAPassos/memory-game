@@ -22,7 +22,7 @@ import athletico from '../iconSrc/atlpr.png';
 
 const Display = (props) => {
 
-  const teams = [
+  const AllTeams = [
     {name: "Santos", img: santos, clicked: false},
     {name: "São Paulo", img: saoPaulo, clicked: false},
     {name: "Corinthians", img: corinthians, clicked: false},
@@ -45,7 +45,43 @@ const Display = (props) => {
     {name: "Atlético-MG", img: atletico, clicked: false},
   ];
 
-  const [cards, setCards] = useState(teams);
+  const getTeams = (teams = [], turn = 0) => {
+    let cardsLength = [5, 10, 15, 20];
+    let randomIndex;
+    // eslint-disable-next-line default-case
+    switch (turn) {
+      case 0:
+        while(teams.length !== cardsLength[turn]) {
+          randomIndex = Math.floor(Math.random() * AllTeams.length);
+          if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
+          else continue;
+        }
+      break;
+      case 1:
+        while(teams.length !== cardsLength[turn]) {
+          randomIndex = Math.floor(Math.random() * AllTeams.length);
+          if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
+          else continue;
+        }
+      break;
+      case 2:
+        while(teams.length !== cardsLength[turn]) {
+          randomIndex = Math.floor(Math.random() * AllTeams.length);
+          if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
+          else continue;
+        }
+      break;
+      case 3:
+        while(teams.length !== cardsLength[turn]) {
+          randomIndex = Math.floor(Math.random() * AllTeams.length);
+          if (teams.every(team => team.name !== AllTeams[randomIndex].name)) teams.push(AllTeams[randomIndex]);
+          else continue;
+        }
+      break;
+    }return teams;
+  }
+
+  const [cards, setCards] = useState(getTeams);
 
   const {setScore, setBestScore} = props.set;
   const {score, bestScore} = props.score;
@@ -56,6 +92,10 @@ const Display = (props) => {
     })
 
     if (bestScore < score) setBestScore(score);
+    if (cards.every(team => team.clicked === true) && cards.length === 5) setCards(getTeams(setAllUnclicked(), 1));
+    if (cards.every(team => team.clicked === true) && cards.length === 10) setCards(getTeams(setAllUnclicked(), 2));
+    if (cards.every(team => team.clicked === true) && cards.length === 15) setCards(getTeams(setAllUnclicked(), 3));
+    if (cards.every(team => team.clicked === true) && cards.length === 20) console.log("Winner!");;
     
     return () => {
       document.querySelectorAll(".teams").forEach((team) => {
@@ -63,7 +103,7 @@ const Display = (props) => {
       })
     }
 
-  });
+  }, [score, bestScore, cards]);
 
   const shuffle = (arr) => {
     let currentIndex = arr.length
@@ -95,11 +135,15 @@ const Display = (props) => {
           clicked: true
         };
       }else if (team.name === teamName && team.clicked === true) {
+        setScore(0);
         miss = true;
         return team;
       }else return team;
     })
-    if (miss === true) newCards = setAllUnclicked();
+    if (miss === true) {
+      newCards = setAllUnclicked();
+      newCards = getTeams();
+    };
     
     setCards(shuffle(newCards));
     }
@@ -107,10 +151,9 @@ const Display = (props) => {
   const setAllUnclicked = () => {
     let newCards = cards.map(team => {
       if (team.clicked === true){
-      return {...team, clicked: false}
+        return {...team, clicked: false}
       }else return team;
     })
-    setScore(0);
     miss = false;
     return newCards;
   }
