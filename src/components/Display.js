@@ -46,7 +46,6 @@ const Display = (props) => {
   ];
 
   const [cards, setCards] = useState(teams);
-  const [miss, setMiss] = useState(false);
 
   const {setScore, setBestScore} = props.set;
   const {score, bestScore} = props.score;
@@ -56,19 +55,21 @@ const Display = (props) => {
       team.addEventListener("click", handleClick);
     })
 
+    if (bestScore < score) setBestScore(score);
+    
     return () => {
       document.querySelectorAll(".teams").forEach((team) => {
         team.removeEventListener("click", handleClick);
       })
     }
 
-  },[score]);
+  });
 
   const shuffle = (arr) => {
     let currentIndex = arr.length
     let randomIndex;
 
-    while(currentIndex != 0) {
+    while(currentIndex !== 0) {
     
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -81,38 +82,37 @@ const Display = (props) => {
     return arr;
   }
 
+  let miss = false;
+
 
   const handleClick = function clickedTeam(e) {    
     const teamName = e.target.getAttribute("data-name");
     let newCards = cards.map(team => {
-      if(team.name == teamName && team.clicked == false){
+      if(team.name === teamName && team.clicked === false){
         setScore(score + 1);
-        if (bestScore < score) setBestScore(score);
         return {
           ...team,
           clicked: true
         };
-      }else if (team.name == teamName && team.clicked == true) {
-        setMiss(true);
+      }else if (team.name === teamName && team.clicked === true) {
+        miss = true;
         return team;
       }else return team;
-    });
-    if (miss == true) setAllUnclicked();
+    })
+    if (miss === true) newCards = setAllUnclicked();
     
     setCards(shuffle(newCards));
-    //console.log(cards);
     }
 
   const setAllUnclicked = () => {
-    setScore(0);
     let newCards = cards.map(team => {
-      if (team.clicked == true){
+      if (team.clicked === true){
       return {...team, clicked: false}
       }else return team;
     })
-    setCards(shuffle(newCards));
-    setMiss(false);
-    console.log(cards);
+    setScore(0);
+    miss = false;
+    return newCards;
   }
     
   const displayTeams = cards.map((team, index) => 
